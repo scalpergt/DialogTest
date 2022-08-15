@@ -1,3 +1,3 @@
 # DialogTest
 
-Make modal dialog above frameset.
+Make modal dialog over a frameset.
