@@ -1,0 +1,86 @@
+<html>
+
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #d1 .header {
+      height: 40px;
+      background-color: aqua;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header .close-btn {
+      width: 25px;
+      height: 25px;
+      background-color: white;
+      border-radius: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 10px;
+    }
+
+    #d1 .body {
+      padding: 1rem;
+      overflow-y: auto;
+    }
+
+
+
+    #d1 {
+      padding: 0;
+    }
+  </style>
+  <script>
+    function test() {
+      let d1 = document.querySelector("#d1")
+      let frame = document.querySelector("#d1 iframe").src = "dummy.html"
+      frame.src = "dummy.html"
+      console.log(d1)
+      d1.showModal()
+    }
+
+    function closeDialog() {
+      let d1 = document.querySelector("#d1")
+      d1.close()
+    }
+
+    function changePage() {
+      document.querySelector("#frameset").contentWindow.changePage()
+
+    }
+
+    function frameLoaded(frame) {
+      console.log(frame.contentWindow.document.body.scrollHeight)
+      let d1 = document.querySelector("#d1 .body")
+
+      d1.style.width = frame.contentWindow.document.body.scrollWidth + 20
+      d1.style.height = frame.contentWindow.document.body.scrollHeight + 20
+
+      frame.style.height = frame.contentWindow.document.body.scrollHeight + 5
+    }
+
+  </script>
+</head>
+
+<body>
+  <dialog id="d1">
+    <div class="header">
+      <div style="width:25px"></div>
+      <div>다이얼로그</div>
+      <div class="close-btn" onclick="closeDialog()">❌</div>
+    </div>
+    <div class="body">
+      <iframe style="border:none" width="100%" onload="frameLoaded(this)"></iframe>
+    </div>
+  </dialog>
+  <iframe id="frameset" style="border:none;" width="100%" height="100%" src="frameset.html"></iframe>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+<html>
+  <script>
+    function changePage() {
+      document.querySelector("#main").src = "top.html"
+      top.window.closeDialog()
+    }
+  </script>
+  <frameset rows="30%,70%">
+    <frame src="top.html"></frame>
+    <frame id="main" src="bottom.html"></frame>
+  </frameset>
+</html>
